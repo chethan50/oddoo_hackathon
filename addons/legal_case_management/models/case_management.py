@@ -3,7 +3,7 @@
 from odoo import models, fields
 
 class LegalCase(models.Model):
-    _name = 'legal.case'
+    _name = 'case.management'
     _description = 'Legal Case'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 

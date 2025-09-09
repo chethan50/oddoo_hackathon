@@ -9,12 +9,12 @@
     'author': "Your Team Name",
     'website': "https://www.your-website.com",
     'category': 'Services/Legal',
-    'depends': ['base', 'mail'],  # 'mail' dependency is needed for chatter
+    'depends': ['base', 'mail'],
     'data': [
-    'security/ir.model.access.csv',
-    'views/case_views.xml',
-    'views/menus.xml',
-],
+        'security/ir.model.access.csv',
+        'views/case_views.xml',
+        'views/menus.xml',
+    ],
     'installable': True,
     'application': True,
     'auto_install': False,

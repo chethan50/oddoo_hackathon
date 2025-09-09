@@ -1,0 +1,25 @@
+/* Tree view headers */
+.o_tree_view th {
+    background-color: #f0f4f8;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Form fields padding */
+.o_form_view .o_field_widget {
+    padding: 5px;
+    font-size: 14px;
+}
+
+/* Kanban cards styling */
+.oe_kanban_card {
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 3px #ccc;
+    margin: 5px;
+}
+
+/* Overdue cases */
+.bg-danger {
+    background-color: #f8d7da !important;
+}

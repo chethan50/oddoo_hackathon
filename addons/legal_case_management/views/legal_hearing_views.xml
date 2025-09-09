@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <!-- Calendar View -->
+        <record id="view_legal_hearing_calendar" model="ir.ui.view">
+            <field name="name">legal.hearing.calendar</field>
+            <field name="model">legal.hearing</field>
+            <field name="arch" type="xml">
+                <calendar string="Hearing Calendar" date_start="date_start">
+                    <field name="name"/>
+                    <field name="case_id"/>
+                    <field name="status"/>
+                    <field name="location"/>
+                </calendar>
+            </field>
+        </record>
+
+        <!-- Tree View -->
         <record id="view_legal_hearing_tree" model="ir.ui.view">
             <field name="name">legal.hearing.tree</field>
             <field name="model">legal.hearing</field>
@@ -10,10 +25,12 @@
                     <field name="case_id"/>
                     <field name="date_start"/>
                     <field name="location"/>
+                    <field name="status"/>
                 </tree>
             </field>
         </record>
 
+        <!-- Form View -->
         <record id="view_legal_hearing_form" model="ir.ui.view">
             <field name="name">legal.hearing.form</field>
             <field name="model">legal.hearing</field>
@@ -23,18 +40,25 @@
                         <group>
                             <field name="name"/>
                             <field name="case_id"/>
+                        </group>
+                        <group>
                             <field name="date_start"/>
                             <field name="location"/>
+                            <field name="status"/>
+                        </group>
+                        <group>
+                            <field name="notes" placeholder="Enter additional notes here"/>
                         </group>
                     </sheet>
                 </form>
             </field>
         </record>
 
+        <!-- Action -->
         <record id="action_legal_hearing" model="ir.actions.act_window">
             <field name="name">Legal Hearings</field>
             <field name="res_model">legal.hearing</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">calendar,tree,form</field>
         </record>
     </data>
 </odoo>

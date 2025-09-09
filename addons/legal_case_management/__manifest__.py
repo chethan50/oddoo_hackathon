@@ -9,14 +9,11 @@
     'author': "Your Team Name",
     'website': "https://www.your-website.com",
     'category': 'Services/Legal',
-    'depends': ['base', 'mail', 'calendar'],  # Added 'calendar'
+    'depends': ['base', 'mail'],
     'data': [
-        'security/security.xml',
         'security/ir.model.access.csv',
+        'views/case_views.xml',
         'views/menus.xml',
-        'views/res_partner_views.xml',
-        'views/legal_case_views.xml',
-        'views/legal_hearing_views.xml',
     ],
     'installable': True,
     'application': True,

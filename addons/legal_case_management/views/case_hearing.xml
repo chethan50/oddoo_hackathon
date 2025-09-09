@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_case_hearing_tree" model="ir.ui.view">
+            <field name="name">case.hearing.tree</field>
+            <field name="model">case.hearing</field>
+            <field name="arch" type="xml">
+                <tree string="Hearings">
+                    <field name="name"/>
+                    <field name="case_id"/>
+                    <field name="date_start"/>
+                    <field name="location"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_case_hearing_form" model="ir.ui.view">
+            <field name="name">case.hearing.form</field>
+            <field name="model">case.hearing</field>
+            <field name="arch" type="xml">
+                <form string="Legal Hearing">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="case_id"/>
+                            <field name="date_start"/>
+                            <field name="location"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -12,8 +12,7 @@
     'depends': ['base', 'mail'],  # 'mail' dependency is needed for chatter
     'data': [
     'security/ir.model.access.csv',
-    'views/legal_case_views.xml',
-    'views/legal_hearing_views.xml',
+    'views/case_views.xml',
     'views/menus.xml',
 ],
     'installable': True,

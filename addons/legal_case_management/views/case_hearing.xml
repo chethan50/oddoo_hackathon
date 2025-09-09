@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record id="view_legal_hearing_tree" model="ir.ui.view">
-            <field name="name">legal.hearing.tree</field>
-            <field name="model">legal.hearing</field>
+        <record id="view_case_hearing_tree" model="ir.ui.view">
+            <field name="name">case.hearing.tree</field>
+            <field name="model">case.hearing</field>
             <field name="arch" type="xml">
                 <tree string="Hearings">
                     <field name="name"/>
@@ -13,10 +13,10 @@
                 </tree>
             </field>
         </record>
-
-        <record id="view_legal_hearing_form" model="ir.ui.view">
-            <field name="name">legal.hearing.form</field>
-            <field name="model">legal.hearing</field>
+        
+        <record id="view_case_hearing_form" model="ir.ui.view">
+            <field name="name">case.hearing.form</field>
+            <field name="model">case.hearing</field>
             <field name="arch" type="xml">
                 <form string="Legal Hearing">
                     <sheet>
@@ -29,12 +29,6 @@
                     </sheet>
                 </form>
             </field>
-        </record>
-
-        <record id="action_legal_hearing" model="ir.actions.act_window">
-            <field name="name">Legal Hearings</field>
-            <field name="res_model">legal.hearing</field>
-            <field name="view_mode">tree,form</field>
         </record>
     </data>
 </odoo>

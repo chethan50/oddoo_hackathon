@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record id="view_legal_case_kanban" model="ir.ui.view">
-            <field name="name">legal.case.kanban</field>
-            <field name="model">legal.case</field>
+        <record id="view_case_management_kanban" model="ir.ui.view">
+            <field name="name">case.management.kanban</field>
+            <field name="model">case.management</field>
             <field name="arch" type="xml">
                 <kanban default_group_by="stage">
                     <field name="stage"/>
@@ -24,9 +24,9 @@
             </field>
         </record>
 
-        <record id="view_legal_case_tree" model="ir.ui.view">
-            <field name="name">legal.case.tree</field>
-            <field name="model">legal.case</field>
+        <record id="view_case_management_tree" model="ir.ui.view">
+            <field name="name">case.management.tree</field>
+            <field name="model">case.management</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
@@ -38,9 +38,9 @@
             </field>
         </record>
 
-        <record id="view_legal_case_form" model="ir.ui.view">
-            <field name="name">legal.case.form</field>
-            <field name="model">legal.case</field>
+        <record id="view_case_management_form" model="ir.ui.view">
+            <field name="name">case.management.form</field>
+            <field name="model">case.management</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
@@ -59,7 +59,7 @@
                         </group>
                         <notebook>
                             <page string="Hearings">
-                                <field name="legal_hearing_ids" widget="one2many_list" context="{'default_case_id': active_id}"/>
+                                <field name="case_hearing_ids" widget="one2many_list" context="{'default_case_id': active_id}"/>
                             </page>
                         </notebook>
                     </sheet>
@@ -70,12 +70,6 @@
                     </div>
                 </form>
             </field>
-        </record>
-
-        <record id="action_legal_case" model="ir.actions.act_window">
-            <field name="name">Legal Cases</field>
-            <field name="res_model">legal.case</field>
-            <field name="view_mode">kanban,tree,form</field>
         </record>
     </data>
 </odoo>

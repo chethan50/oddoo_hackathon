@@ -41,6 +41,8 @@ class LegalCase(models.Model):
         string='Stage',
         default='new',
         tracking=True)
-
-    description = fields.Text(string="Case Description")
-    date_filed = fields.Date(string="Date Filed")
+    
+    case_hearing_ids = fields.One2many(
+        'case.hearing',
+        'case_id',
+        string='Hearings')

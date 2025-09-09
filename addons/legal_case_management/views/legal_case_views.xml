@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_legal_case_kanban" model="ir.ui.view">
+            <field name="name">legal.case.kanban</field>
+            <field name="model">legal.case</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="stage">
+                    <field name="stage"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div>
+                                    <strong class="o_kanban_record_title"><field name="name"/></strong>
+                                </div>
+                                <ul>
+                                    <li>Client: <field name="client_id"/></li>
+                                    <li>Lawyer: <field name="responsible_lawyer_id"/></li>
+                                </ul>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="view_legal_case_tree" model="ir.ui.view">
+            <field name="name">legal.case.tree</field>
+            <field name="model">legal.case</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="client_id"/>
+                    <field name="responsible_lawyer_id"/>
+                    <field name="case_type"/>
+                    <field name="stage"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_legal_case_form" model="ir.ui.view">
+            <field name="name">legal.case.form</field>
+            <field name="model">legal.case</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1><field name="name" placeholder="Case Name"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="client_id"/>
+                                <field name="responsible_lawyer_id"/>
+                            </group>
+                            <group>
+                                <field name="case_type"/>
+                                <field name="stage" widget="statusbar" readonly="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Hearings">
+                                <field name="legal_hearing_ids" widget="one2many_list" context="{'default_case_id': active_id}"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_legal_case" model="ir.actions.act_window">
+            <field name="name">Legal Cases</field>
+            <field name="res_model">legal.case</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+    </data>
+</odoo>

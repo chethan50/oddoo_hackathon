@@ -1,28 +1,22 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Legal Case Management",
-
-    'summary': """
-        Manage legal cases, hearings, clients, and lawyers.""",
-
-    'description': """
-        A comprehensive module for legal firms to manage their cases,
-        track hearings, and handle client and lawyer information efficiently.
-    """,
-
-    'author': "Your Hackathon Team",
-    'website': "https://www.yourteam.com",
-
-    'category': 'Services/Legal',
+    'name': "Odoo Legal Management",
     'version': '1.0',
-
-    'depends': ['base', 'mail', 'account', 'calendar'],
-
+    'summary': "A comprehensive solution for managing legal cases and hearings.",
+    'description': """
+        A module to manage legal cases, clients, lawyers, and hearings within Odoo.
+    """,
+    'author': "Your Team Name",
+    'website': "https://www.your-website.com",
+    'category': 'Services/Legal',
+    'depends': ['base', 'mail'],  # 'mail' dependency is needed for chatter
     'data': [
-        'security/security.xml',
-        'security/ir.model.access.csv',
-    ],
-    
-    'application': True,
+    'security/ir.model.access.csv',
+    'views/legal_case_views.xml',
+    'views/legal_hearing_views.xml',
+    'views/menus.xml',
+],
     'installable': True,
+    'application': True,
+    'auto_install': False,
 }

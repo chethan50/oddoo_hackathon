@@ -1,32 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-        <menuitem id="legal_case_management_root"
-                  name="Legal"
-                  sequence="100"/>
-        
-        <record id="action_case_management" model="ir.actions.act_window">
-            <field name="name">Legal Cases</field>
-            <field name="res_model">case.management</field>
-            <field name="view_mode">kanban,tree,form</field>
-        </record>
+    <!-- Top-level Menu -->
+    <menuitem id="menu_legal_root"
+              name="Legal"
+              sequence="10"
+              web_icon="legal_case_management,static/description/icon.png"/>
 
-        <menuitem id="legal_case_menu"
-                  name="Cases"
-                  parent="legal_case_management_root"
-                  action="action_case_management"
-                  sequence="10"/>
+    <!-- Sub-menu for Cases -->
+    <menuitem id="menu_legal_cases"
+              name="Cases"
+              parent="menu_legal_root"
+              action="action_legal_case"
+              sequence="10"/>
 
-        <record id="action_case_hearing" model="ir.actions.act_window">
-            <field name="name">Legal Hearings</field>
-            <field name="res_model">case.hearing</field>
-            <field name="view_mode">tree,form</field>
-        </record>
-
-        <menuitem id="legal_hearing_menu"
-                  name="Hearings"
-                  parent="legal_case_management_root"
-                  action="action_case_hearing"
-                  sequence="20"/>
-    </data>
+    <!-- Sub-menu for Hearings -->
+    <menuitem id="menu_legal_hearings"
+              name="Hearings"
+              parent="menu_legal_root"
+              action="action_legal_hearing"
+              sequence="20"/>
 </odoo>
+

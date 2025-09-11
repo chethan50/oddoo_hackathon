@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree/List View for Hearings -->
+    <record id="view_legal_hearing_tree" model="ir.ui.view">
+        <field name="name">legal.hearing.list</field> <!-- Corrected name for consistency -->
+        <field name="model">legal.hearing</field>
+        <field name="arch" type="xml">
+            <!-- The <tree> tag is renamed to <list> in Odoo 17+ -->
+            <list string="Hearings">
+                <field name="name"/>
+                <field name="case_id"/>
+                <field name="date_start"/>
+                <field name="status"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View for Hearings -->
+    <record id="view_legal_hearing_form" model="ir.ui.view">
+        <field name="name">legal.hearing.form</field>
+        <field name="model">legal.hearing</field>
+        <field name="arch" type="xml">
+            <form string="Hearing">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="case_id"/>
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                        <field name="location"/>
+                        <field name="status"/>
+                    </group>
+                    <notebook>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Calendar View for Hearings -->
+    <record id="view_legal_hearing_calendar" model="ir.ui.view">
+        <field name="name">legal.hearing.calendar</field>
+        <field name="model">legal.hearing</field>
+        <field name="arch" type="xml">
+            <calendar string="Hearings" date_start="date_start" date_stop="date_end" color="case_id">
+                <field name="name"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- Window Action for Hearings -->
+    <record id="action_legal_hearing" model="ir.actions.act_window">
+        <field name="name">Hearings</field>
+        <field name="res_model">legal.hearing</field>
+        <!-- Replaced 'tree' with 'list' -->
+        <field name="view_mode">calendar,list,form</field>
+        <!-- In Odoo 17+, we specify the default view here -->
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'calendar', 'view_id': ref('view_legal_hearing_calendar')}),
+            (0, 0, {'view_mode': 'list', 'view_id': ref('view_legal_hearing_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_legal_hearing_form')})]"/>
+    </record>
+</odoo>
+

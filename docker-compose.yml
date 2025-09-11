@@ -1,32 +1,29 @@
-version: '3.8'
+version: '3.1'
 services:
-  web:
-    image: odoo:16.0
+  db:
+    image: postgres:15
+    container_name: odoo_legal_db
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+    restart: always
+
+  odoo:
+    image: odoo:18.0
     container_name: odoo_legal_web
     depends_on:
       - db
     ports:
       - "8069:8069"
     volumes:
-      - ./config:/etc/odoo
       - ./addons:/mnt/extra-addons
-    environment:
-      - HOST=db
-      - USER=odoo
-      - PASSWORD=myodoo_password
-    # This command installs a fully compatible set of libraries
-    command: >
-      sh -c "pip install Werkzeug==2.2.2 Jinja2==3.1.2 MarkupSafe==2.1.1 && odoo"
-
-  db:
-    image: postgres:15
-    container_name: odoo_legal_db
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_PASSWORD=myodoo_password
-      - POSTGRES_USER=odoo
-    volumes:
-      - odoo-db-data:/var/lib/postgresql/data
+      - ./config:/etc/odoo
+      - odoo-web-data:/var/lib/odoo
+    restart: always
 
 volumes:
   odoo-db-data:
+  odoo-web-data:

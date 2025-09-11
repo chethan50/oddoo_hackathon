@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
-
-from odoo import models, fields
+from odoo import fields, models
 
 class ResPartner(models.Model):
+    """Extends the Partner model to add legal-specific flags."""
     _inherit = 'res.partner'
 
     is_lawyer = fields.Boolean(string="Is a Lawyer")

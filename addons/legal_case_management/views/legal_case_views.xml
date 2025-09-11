@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- List View for Cases -->
+    <record id="view_legal_case_list" model="ir.ui.view">
+        <field name="name">legal.case.list</field>
+        <field name="model">legal.case</field>
+        <field name="arch" type="xml">
+            <list string="Cases">
+                <field name="name"/>
+                <field name="client_id"/>
+                <field name="responsible_lawyer_id"/>
+                <field name="open_date"/>
+                <field name="stage"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View for Cases (Restructured for Stability) -->
+    <record id="view_legal_case_form" model="ir.ui.view">
+        <field name="name">legal.case.form</field>
+        <field name="model">legal.case</field>
+        <field name="arch" type="xml">
+            <form string="Case">
+                <!-- The header is where the buttons and status bar live -->
+                <header>
+                    <button name="action_create_invoice" string="Create Invoice" type="object" class="oe_highlight"/>
+                    <field name="stage" widget="statusbar" statusbar_visible="intake,active,closed"/>
+                </header>
+                <!-- The sheet provides a clean page-like layout -->
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                         <button name="action_view_invoices" type="object" class="oe_stat_button" icon="fa-pencil-square-o">
+                            <field name="invoice_count" widget="statinfo" string="Invoices"/>
+                        </button>
+                        <button name="action_view_hearings" type="object" class="oe_stat_button" icon="fa-calendar">
+                            <field name="hearing_count" widget="statinfo" string="Hearings"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <!-- Using a notebook to better structure the form content -->
+                    <notebook>
+                        <page string="Case Details">
+                            <group>
+                                <group>
+                                    <field name="client_id"/>
+                                    <field name="responsible_lawyer_id"/>
+                                    <field name="fixed_fee_amount"/>
+                                </group>
+                                <group>
+                                    <field name="open_date"/>
+                                    <field name="close_date"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Window Action for Cases -->
+    <record id="action_legal_case" model="ir.actions.act_window">
+        <field name="name">Cases</field>
+        <field name="res_model">legal.case</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new legal case.
+            </p>
+        </field>
+    </record>
+</odoo>
+

@@ -1,21 +1,33 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Odoo Legal Management",
-    'version': '1.0',
-    'summary': "A comprehensive solution for managing legal cases and hearings.",
+    'name': "Legal Case Management",
+    'summary': "Manage legal cases, clients, lawyers, and hearings.",
     'description': """
-        A module to manage legal cases, clients, lawyers, and hearings within Odoo.
+        A minimal application to manage legal cases for law firms.
     """,
-    'author': "Your Team Name",
-    'website': "https://www.your-website.com",
+    'author': "Your Name",
+    'website': "https://www.yourcompany.com",
     'category': 'Services/Legal',
+    'version': '18.0.1.0.0',
+    'license': 'AGPL-3',
+
+    # any module necessary for this one to work correctly
     'depends': ['base', 'mail'],
+
+    # always loaded in this specific order
     'data': [
+        # 1. Security groups and rules must be loaded first.
+        'security/security.xml',
         'security/ir.model.access.csv',
-        'views/case_views.xml',
+        
+        # 2. Data files (like sequences).
+        'data/sequence_data.xml',
+        
+        # 3. Views (the user interface).
+        'views/res_partner_views.xml', # This was missing, so I've added it.
+        'views/legal_case_views.xml',
+        'views/legal_hearing_views.xml', # This was missing, so I've added it.
         'views/menus.xml',
     ],
-    'installable': True,
     'application': True,
-    'auto_install': False,
 }

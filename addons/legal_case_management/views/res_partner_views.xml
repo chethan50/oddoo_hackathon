@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Adds the "Is Lawyer" and "Is Client" fields to the contact form view -->
+    <record id="view_partner_form_legal" model="ir.ui.view">
+        <field name="name">res.partner.form.legal</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+                <group>
+                    <field name="is_lawyer"/>
+                    <field name="is_client"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Adds "Lawyers" and "Clients" filters to the contact search view -->
+    <record id="view_res_partner_filter_legal" model="ir.ui.view">
+        <field name="name">res.partner.select.legal</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <!-- This xpath is more stable. It finds the main <search> tag
+                 and adds the new filters inside it, at the end. -->
+            <xpath expr="//search" position="inside">
+                <separator/>
+                <filter string="Lawyers" name="filter_lawyer" domain="[('is_lawyer', '=', True)]"/>
+                <filter string="Clients" name="filter_client" domain="[('is_client', '=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+

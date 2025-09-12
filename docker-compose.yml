@@ -1,5 +1,6 @@
-version: '3.1'
+# The "version" tag is no longer needed in modern Docker Compose
 services:
+  # PostgreSQL Database Service
   db:
     image: postgres:15
     container_name: odoo_legal_db
@@ -11,6 +12,7 @@ services:
       - odoo-db-data:/var/lib/postgresql/data
     restart: always
 
+  # Odoo Application Service
   odoo:
     image: odoo:18.0
     container_name: odoo_legal_web
@@ -23,6 +25,21 @@ services:
       - ./config:/etc/odoo
       - odoo-web-data:/var/lib/odoo
     restart: always
+
+  # Ngrok Tunnel Service
+  ngrok:
+    image: ngrok/ngrok:latest
+    container_name: odoo_legal_ngrok
+    restart: always
+    depends_on:
+      - odoo
+    ports:
+      - "4040:4040"
+    environment:
+      - NGROK_AUTHTOKEN=$32W2Yq12087KBTodw1dw9r1JTyO_7FjFGgqeV8c15afasLe9w
+    volumes:
+      - ./ngrok.yml:/etc/ngrok.yml
+    command: start --all --config /etc/ngrok.yml
 
 volumes:
   odoo-db-data:

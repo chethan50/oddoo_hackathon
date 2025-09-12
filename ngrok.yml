@@ -1,0 +1,6 @@
+version: "2"
+authtoken: $ 32W2Yq12087KBTodw1dw9r1JTyO_7FjFGgqeV8c15afasLe9w  # This will be read from an environment variable
+tunnels:
+  odoo:
+    proto: http
+    addr: odoo:8069 # This points to the 'odoo' service in docker-compose on its port

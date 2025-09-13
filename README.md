@@ -22,6 +22,14 @@ This module provides a minimal, clean, and testable application for managing leg
 3.	Go to the project folder:cd odoo_hackathon
 4.	Start Odoo with Docker Compose:docker-compose up -d
 5.	Open Odoo in your browser:http://localhost:8069
+6.	6. Create a New Database:
+	•	Click “Create Database.”
+	•	Check the Demo data box to load sample data.
+7. Install the Module:
+	•	Go to Apps → Update Apps List.
+	•	Search for Legal Case Management.
+	•	Click Install.
+
 
 ---
 
@@ -35,12 +43,10 @@ This module provides a minimal, clean, and testable application for managing leg
 
 ### **Usage**
 
-1.  Access the module via the new top-level **"Legal"** menu.
-2.  Create a case under **Legal > Cases**.
-3.  Add hearings from the case form or the **Legal > Hearings** calendar.
-4.  Attach documents using the **chatter** on the case form.
-5.  Click the **"Create Invoice"** button on the case form to generate a draft invoice.
-
+1. Access the application via the new top-level menu named "Legal."
+2. Create a case by navigating to Legal > Cases and clicking the Create button.
+3. Manage hearings and attach documents from the form view of an individual case.
+4. Print a "Case Summary" PDF report from the Print menu on a case record
 
 ---
 

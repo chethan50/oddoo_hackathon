@@ -22,7 +22,7 @@ This module provides a minimal, clean, and testable application for managing leg
 3.	Go to the project folder:cd odoo_hackathon
 4.	Start Odoo with Docker Compose:docker-compose up -d
 5.	Open Odoo in your browser:http://localhost:8069
-6.	6. Create a New Database:
+6.	Create a New Database:
 	•	Click “Create Database.”
 	•	Check the Demo data box to load sample data.
 7. Install the Module:

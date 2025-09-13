@@ -1,6 +1,6 @@
 # Odoo Legal Case Management (Community, Odoo 18)
 
-This module provides a minimal, clean, and testable application for managing legal cases within Odoo. It's designed to handle core legal office tasks, including client and lawyer management, case registration, hearing scheduling, document handling, and fixed-fee invoicing.
+This module provides a minimal, clean, and testable application for managing legal cases within Odoo. Designed for Odoo 18, it handles core legal office tasks, including client and lawyer management, case registration, hearing scheduling, document handling, and fixed-fee invoicing.
 
 ### **Key Features**
 
@@ -15,9 +15,13 @@ This module provides a minimal, clean, and testable application for managing leg
 
 ### **Installation**
 
-1.  Place this module in your Odoo custom addons path.
-2.  Install the required dependencies: `base`, `mail`, `account`, and `calendar`.
-3.  Go to **Apps**, click **"Update Apps List"**, and then search for and install **"Legal Case Management"**.
+1. Install Prerequisites:
+	•	Download and install Git: https://git-scm.com/downloads
+	•	Download and install Docker Desktop: https://www.docker.com/products/docker-desktop/
+2.	Clone the repository:git clone https://github.com/chethan50/oddoo_hackathon.git
+3.	Go to the project folder:cd odoo_hackathon
+4.	Start Odoo with Docker Compose:docker-compose up -d
+5.	Open Odoo in your browser:http://localhost:8069
 
 ---
 
@@ -36,7 +40,7 @@ This module provides a minimal, clean, and testable application for managing leg
 3.  Add hearings from the case form or the **Legal > Hearings** calendar.
 4.  Attach documents using the **chatter** on the case form.
 5.  Click the **"Create Invoice"** button on the case form to generate a draft invoice.
-6.  Print a **"Case Summary"** PDF from the print actions on a case record.
+
 
 ---
 
